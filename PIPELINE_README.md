@@ -2,7 +2,7 @@
 
 A production-ready Node.js/Express CLI and API application that automates the complete end-to-end B2B outreach workflow. Transform a single seed company domain into a personalized outreach campaign with zero human intervention.
 
-## 🎯 Pipeline Overview
+## Pipeline Overview
 
 ```
 Input: google.com
@@ -25,7 +25,7 @@ Input: google.com
 Output: Verified campaign results + logs
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -80,7 +80,7 @@ npm run server
 # Server runs on http://localhost:3000
 ```
 
-## 📋 CLI Usage
+## CLI Usage
 
 ### Basic Command
 
@@ -117,7 +117,7 @@ npm run pipeline -- apple.com --dry-run
 npm run pipeline -- salesforce.com --company-limit 10 --dry-run
 ```
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### 1. Health Check
 ```
@@ -246,13 +246,13 @@ GET /api/pipeline/status/{pipelineId}
 GET /api/pipeline/list
 ```
 
-## 🛡️ Safety Checkpoint
+## Safety Checkpoint
 
 The pipeline includes a mandatory safety checkpoint **before sending any emails**:
 
 ```
 ============================================================
-🛡️  SAFETY CHECKPOINT - PLEASE REVIEW
+SAFETY CHECKPOINT - PLEASE REVIEW
 ============================================================
 
 📊 PIPELINE SUMMARY:
@@ -261,7 +261,7 @@ The pipeline includes a mandatory safety checkpoint **before sending any emails*
    ├─ Emails Resolved: 18
    └─ Emails Ready to Send: 18
 
-⚠️  ACTION REQUIRED:
+[WARNING] ACTION REQUIRED:
    This pipeline is about to send 18 outreach emails.
    Once sent, emails cannot be recalled.
 
@@ -307,7 +307,7 @@ logs/
 .env                                      # API keys & settings
 ```
 
-## 🔧 Configuration Details
+## Configuration Details
 
 ### Environment Variables
 
@@ -338,7 +338,7 @@ DRY_RUN=false                             # Test without side effects
 ENABLE_EMAIL_SENDING=true                 # Enable/disable email sending
 ```
 
-## 📝 Logging
+## Logging
 
 All operations are logged to `logs/application.log`:
 
@@ -356,7 +356,7 @@ View logs in real-time:
 tail -f logs/application.log
 ```
 
-## ⚠️ Error Handling & Resilience
+## Error Handling & Resilience
 
 The pipeline implements comprehensive error handling:
 
@@ -366,7 +366,7 @@ The pipeline implements comprehensive error handling:
 - **Retry logic**: Configurable retries for transient errors
 - **Timeout protection**: All API calls have 10-second timeout
 
-## 🧪 Testing the Pipeline
+## Testing the Pipeline
 
 ### 1. Test with Dry Run (No Emails Sent)
 ```bash
@@ -395,44 +395,44 @@ curl -X POST http://localhost:3000/api/contact/enrich \
   -d '{"linkedinUrl":"https://www.linkedin.com/in/satya-nadella/"}'
 ```
 
-## 📊 Sample Output
+## Sample Output
 
 ### CLI Execution Output
 ```
 ╔═══════════════════════════════════════════════════════════╗
-║    🚀 AUTOMATED B2B OUTREACH PIPELINE CLI 🚀             ║
+║      AUTOMATED B2B OUTREACH PIPELINE CLI                  ║
 ║   Transform domains into personalized campaigns           ║
 ╚═══════════════════════════════════════════════════════════╝
 
-✅ Stage 1: Discovered 8 companies
+Stage 1: Discovered 8 companies
 
-✅ Stage 2: Found 24 contacts
+Stage 2: Found 24 contacts
 
-✅ Stage 3: Resolved 18 verified emails
+Stage 3: Resolved 18 verified emails
 
-🛡️  SAFETY CHECKPOINT - PLEASE REVIEW
+SAFETY CHECKPOINT - PLEASE REVIEW
    Companies Discovered: 8
    Contacts Found: 24
    Emails Ready: 18
    
    Do you want to PROCEED? (yes/no): yes
 
-✅ Stage 4: Sent 18 outreach emails
+Stage 4: Sent 18 outreach emails
 
 ============================================================
-📈 FINAL PIPELINE SUMMARY
+FINAL PIPELINE SUMMARY
 ============================================================
-✅ Pipeline Status: SUCCESS
-⏱️  Total Time: 45.23s
+Pipeline Status: SUCCESS
+Total Time: 45.23s
 
-📊 Results:
+Results:
    ├─ Companies Discovered: 8
    ├─ Contacts Found: 24
    ├─ Emails Resolved: 18
    └─ Emails Sent: 18
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### "Missing required API keys"
 **Problem**: APOLLO_API_KEY not set in `.env`
@@ -464,13 +464,13 @@ npm run pipeline -- google.com --dry-run
 # Check BREVO_API_KEY in .env
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 Full API documentation available at:
 - **OpenAPI/Swagger**: (Coming soon)
 - **Postman Collection**: (Available in /docs)
 
-## 🔗 Integration Points
+## Integration Points
 
 ### Stage 1: Company Discovery
 - **Provider**: Apollo.io
@@ -492,15 +492,15 @@ Full API documentation available at:
 - **Endpoint**: `/v3/smtp/email`
 - **Auth**: api-key header
 
-## 📄 License
+## License
 
 ISC
 
-## 👨‍💻 Author
+## Author
 
 Prakhar Tripathi <gurawliprakhar@gmail.com>
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Please ensure:
 - Code follows existing patterns

@@ -1,6 +1,6 @@
 # Quick Start - Copy & Paste Curl Commands
 
-## 🚀 Start the Server
+## Start the Server
 
 ```bash
 npm install
@@ -11,7 +11,7 @@ Server will run on `http://localhost:3000`
 
 ---
 
-## ✅ Test 1: Health Check (Verify Server Running)
+## Test 1: Health Check (Verify Server Running)
 
 ```bash
 curl http://localhost:3000
@@ -21,7 +21,7 @@ curl http://localhost:3000
 
 ---
 
-## ✅ Test 2: Discover Similar Companies
+## Test 2: Discover Similar Companies
 
 ```bash
 curl "http://localhost:3000/discover?domain=google.com&limit=10"
@@ -31,7 +31,7 @@ curl "http://localhost:3000/discover?domain=google.com&limit=10"
 
 ---
 
-## ✅ Test 3: Preview Pipeline (No Emails Sent)
+## Test 3: Preview Pipeline (No Emails Sent)
 
 ```bash
 curl -X POST "http://localhost:3000/api/pipeline/preview" \
@@ -46,7 +46,7 @@ curl -X POST "http://localhost:3000/api/pipeline/preview" \
 
 ---
 
-## ✅ Test 4: Execute Full Pipeline
+## Test 4: Execute Full Pipeline
 
 ### Method A: Skip Safety Checkpoint
 ```bash
@@ -67,7 +67,7 @@ npm run pipeline -- microsoft.com --company-limit 10
 
 ---
 
-## ✅ Test 5: Enrich Single LinkedIn Profile
+## Test 5: Enrich Single LinkedIn Profile
 
 ```bash
 curl -X POST "http://localhost:3000/api/contact/enrich" \
@@ -82,7 +82,7 @@ curl -X POST "http://localhost:3000/api/contact/enrich" \
 
 ---
 
-## ✅ Test 6: Enrich Multiple Profiles
+## Test 6: Enrich Multiple Profiles
 
 ```bash
 curl -X POST "http://localhost:3000/api/contact/enrich-batch" \
@@ -101,7 +101,7 @@ curl -X POST "http://localhost:3000/api/contact/enrich-batch" \
 
 ---
 
-## ✅ Test 7: List All Pipelines
+## Test 7: List All Pipelines
 
 ```bash
 curl "http://localhost:3000/api/pipeline/list"
@@ -111,7 +111,7 @@ curl "http://localhost:3000/api/pipeline/list"
 
 ---
 
-## 🎯 CLI Commands (Recommended for Full Pipeline)
+## CLI Commands (Recommended for Full Pipeline)
 
 ### Basic: Discover from domain
 ```bash
@@ -135,7 +135,7 @@ npm run pipeline -- apple.com --dry-run
 
 ---
 
-## 📊 View Results
+## View Results
 
 ### Check saved contacts
 ```bash
@@ -154,7 +154,7 @@ grep "PIPELINE COMPLETED" logs/application.log | wc -l
 
 ---
 
-## 🔍 Common Workflows
+## Common Workflows
 
 ### Workflow 1: Complete Automation (No User Input)
 ```bash
@@ -186,16 +186,16 @@ done
 
 ---
 
-## ⚠️ Safety Checkpoint
+## Safety Checkpoint
 
 When you run the full pipeline via CLI, you'll see:
 
 ```
 ============================================================
-🛡️  SAFETY CHECKPOINT - PLEASE REVIEW
+SAFETY CHECKPOINT - PLEASE REVIEW
 ============================================================
 
-📊 PIPELINE SUMMARY:
+PIPELINE SUMMARY:
    ├─ Companies Discovered: 8
    ├─ Contacts Found: 24
    ├─ Emails Resolved: 18
@@ -208,7 +208,7 @@ Type **yes** or **y** to proceed, anything else to cancel.
 
 ---
 
-## 📝 Environment Configuration
+## Environment Configuration
 
 Make sure `.env` has:
 
@@ -221,7 +221,7 @@ PROSPEO_API_KEY=your_key_here      (optional)
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **Q: "Connection refused"**
 A: Start the server first with `npm run server`
@@ -237,7 +237,7 @@ A: Check if BREVO_API_KEY is set in `.env`
 
 ---
 
-## 🎬 Run Your First Pipeline
+## Run Your First Pipeline
 
 ```bash
 # 1. Install dependencies
@@ -258,7 +258,7 @@ tail -f logs/application.log
 
 ---
 
-## 📚 More Examples
+## More Examples
 
 ### Test Different Companies
 ```bash
@@ -280,15 +280,15 @@ curl -s "http://localhost:3000/api/pipeline/list" | jq '.pipelines[] | {id, seed
 
 ---
 
-## 🚀 Ready to Go!
+## Ready to Go!
 
 Pick any command above and run it. The pipeline will automatically:
 
-1. ✅ Find similar companies
-2. ✅ Discover decision makers
-3. ✅ Resolve email addresses
-4. ✅ Show safety checkpoint
-5. ✅ Send personalized outreach
+1. Find similar companies
+2. Discover decision makers
+3. Resolve email addresses
+4. Show safety checkpoint
+5. Send personalized outreach
 
 **Start here:**
 ```bash

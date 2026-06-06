@@ -154,7 +154,7 @@ curl -X POST "http://localhost:3000/companies/search" \
 
 ## Stage 02: LinkedIn Profile Enrichment (Apollo API)
 
-### ⚠️ Important: Apollo Plan Requirements
+### [IMPORTANT] Apollo Plan Requirements
 
 The `/people/search` endpoint requires a **PAID Apollo.io plan**. 
 
@@ -384,19 +384,19 @@ subspace-assignment/
 
 ## Key Features
 
-✅ **Company Discovery** - Find lookalike companies via Apollo.io  
-✅ **LinkedIn Profile Enrichment** - Extract contact info from LinkedIn via Apollo.io  
-✅ **Single API Key** - Use one Apollo.io API key for all operations  
-✅ **Batch Processing** - Enrich multiple profiles in one request  
-✅ **File Storage** - Auto-save enriched contacts to JSON file  
-✅ **Flexible Input** - Accept parameters via query string or JSON body  
-✅ **Comprehensive Error Handling** - Meaningful error messages for all scenarios  
-✅ **Rate Limit Handling** - Graceful backoff with sequential processing  
-✅ **Structured Logging** - Full audit trail with Winston logger  
-✅ **Pagination Support** - Handle large result sets  
-✅ **Environment Management** - Secure API key configuration  
-✅ **Input Validation** - Required parameter checking  
-✅ **De-duplication** - Automatically prevent duplicate contacts by email  
+- **Company Discovery** - Find lookalike companies via Apollo.io  
+- **LinkedIn Profile Enrichment** - Extract contact info from LinkedIn via Apollo.io  
+- **Single API Key** - Use one Apollo.io API key for all operations  
+- **Batch Processing** - Enrich multiple profiles in one request  
+- **File Storage** - Auto-save enriched contacts to JSON file  
+- **Flexible Input** - Accept parameters via query string or JSON body  
+- **Comprehensive Error Handling** - Meaningful error messages for all scenarios  
+- **Rate Limit Handling** - Graceful backoff with sequential processing  
+- **Structured Logging** - Full audit trail with Winston logger  
+- **Pagination Support** - Handle large result sets  
+- **Environment Management** - Secure API key configuration  
+- **Input Validation** - Required parameter checking  
+- **De-duplication** - Automatically prevent duplicate contacts by email  
 
 ## Dependencies
 
@@ -425,16 +425,16 @@ Implement exponential backoff for production use.
 ## Apollo.io Plan Limitations
 
 ### What Works on FREE Plan
-- ✅ Company Search (`/organizations/search`)
-- ✅ Domain discovery
-- ✅ Organization employee count
-- ✅ Company website & info
+- [YES] Company Search (`/organizations/search`)
+- [YES] Domain discovery
+- [YES] Organization employee count
+- [YES] Company website & info
 
 ### What Requires PAID Plan
-- ❌ Person Search (`/people/search`)
-- ❌ Individual contact enrichment
-- ❌ Verified email addresses
-- ❌ Job title & position details
+- [NO] Person Search (`/people/search`)
+- [NO] Individual contact enrichment
+- [NO] Verified email addresses
+- [NO] Job title & position details
 
 ### Workaround: Free Plan Usage
 

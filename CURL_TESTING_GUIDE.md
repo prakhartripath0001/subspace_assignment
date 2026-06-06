@@ -449,28 +449,28 @@ curl -X POST "http://localhost:3000/api/pipeline/execute" \
 ```bash
 #!/bin/bash
 
-echo "🧪 Testing Automated B2B Outreach Pipeline"
+echo "Testing Automated B2B Outreach Pipeline"
 echo "==========================================="
 
 # Test 1: Health Check
-echo -e "\n✅ Test 1: Health Check"
+echo -e "\nTest 1: Health Check"
 curl -s http://localhost:3000 | jq '.status'
 
 # Test 2: Company Discovery
-echo -e "\n✅ Test 2: Company Discovery"
+echo -e "\nTest 2: Company Discovery"
 curl -s "http://localhost:3000/discover?domain=google.com&limit=3" | jq '.count'
 
 # Test 3: Pipeline Preview
-echo -e "\n✅ Test 3: Pipeline Preview"
+echo -e "\nTest 3: Pipeline Preview"
 curl -s -X POST "http://localhost:3000/api/pipeline/preview" \
   -H "Content-Type: application/json" \
   -d '{"seedDomain":"google.com","companyLimit":3}' | jq '.preview.companies | length'
 
 # Test 4: List Pipelines
-echo -e "\n✅ Test 4: List Active Pipelines"
+echo -e "\nTest 4: List Active Pipelines"
 curl -s "http://localhost:3000/api/pipeline/list" | jq '.total'
 
-echo -e "\n✅ All tests completed!\n"
+echo -e "\nAll tests completed!\n"
 ```
 
 ### Run Script
@@ -522,11 +522,11 @@ echo "APOLLO_API_KEY=your_key" >> .env
 ## Summary
 
 Use these curl commands to test:
-- ✅ API health and availability
-- ✅ Company discovery functionality
-- ✅ Contact enrichment
-- ✅ Full pipeline execution
-- ✅ Error handling and validation
-- ✅ Pipeline status and history
+- API health and availability
+- Company discovery functionality
+- Contact enrichment
+- Full pipeline execution
+- Error handling and validation
+- Pipeline status and history
 
 For additional help or to report issues, check `logs/application.log`
