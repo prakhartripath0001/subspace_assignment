@@ -147,3 +147,18 @@
 2026-06-06 21:59:11 [INFO]: [OK] Stage 4 Complete: 0 emails sent
 2026-06-06 21:59:11 [INFO]: === OUTREACH PIPELINE COMPLETED === {"success":true,"totalTime":2107,"companiesDiscovered":1,"contactsFound":0,"emailsResolved":0,"emailsSent":0,"errors":[]}
 2026-06-06 21:59:11 [INFO]: Pipeline Preview Complete {"seedDomain":"stripe.com","companiesFound":1}
+2026-06-07 00:20:50 [INFO]: Configuration loaded successfully {"environment":"development","apolloEnabled":true,"prospeoEnabled":true,"eazyreachEnabled":true,"brevoEnabled":true}
+2026-06-07 00:20:50 [INFO]: CLI Pipeline Execution Started {"seedDomain":"google.com","options":{"companyLimit":2,"skipConfirmation":false,"dryRun":true}}
+2026-06-07 00:20:50 [INFO]: === OUTREACH PIPELINE STARTED === {"seedDomain":"google.com","dryRun":true}
+2026-06-07 00:20:50 [INFO]: 
+[STAGE 1] COMPANY DISCOVERY
+2026-06-07 00:20:50 [INFO]: Apollo search initiated {"seedDomain":"google.com","perPage":2}
+2026-06-07 00:20:51 [INFO]: Apollo search responded {"status":200,"seedDomain":"google.com"}
+2026-06-07 00:20:51 [INFO]: Apollo search complete {"seedDomain":"google.com","rawCount":1,"uniqueCount":1}
+2026-06-07 00:20:51 [INFO]: [OK] Stage 1 Complete: 1 companies discovered
+2026-06-07 00:20:51 [INFO]: 
+[STAGE 2] CONTACT DISCOVERY
+2026-06-07 00:20:51 [INFO]: Stage 2 Batch: Discovering contacts for multiple companies {"count":1}
+2026-06-07 00:20:51 [INFO]: Stage 2: Contact Discovery Started {"company":"Google","domain":"google.com"}
+2026-06-07 00:20:51 [INFO]: Stage 2 Complete {"company":"Google","contactsFound":0}
+2026-06-07 00:20:52 [INFO]: Stage 2 Batch Complete {"processedCompanies":1,"failedCompanies":0,"totalContacts":0}

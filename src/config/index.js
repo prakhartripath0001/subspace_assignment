@@ -11,6 +11,8 @@ const config = {
   APOLLO_API_KEY: process.env.APOLLO_API_KEY || '',
   PROSPEO_API_KEY: process.env.PROSPEO_API_KEY || '',
   EAZYREACH_API_KEY: process.env.EAZYREACH_API_KEY || '',
+  EAZYREACH_CLIENT_ID: process.env.EAZYREACH_CLIENT_ID || '',
+  EAZYREACH_CLIENT_SECRET: process.env.EAZYREACH_CLIENT_SECRET || '',
   BREVO_API_KEY: process.env.BREVO_API_KEY || '',
 
   // API Endpoints
