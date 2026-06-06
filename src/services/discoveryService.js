@@ -233,6 +233,11 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
 
 // --- Exports ------------------------------------------------------------------
 
-module.exports = {
-  discoverCompanies,
-};
+class DiscoveryService {
+  async discoverCompanies(seedDomain, limit) {
+    return discoverCompanies(seedDomain, limit);
+  }
+}
+
+module.exports = DiscoveryService;
+module.exports.discoverCompanies = discoverCompanies;

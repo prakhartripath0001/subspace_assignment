@@ -1,0 +1,9 @@
+[
+  {
+    "name": "williamhgates",
+    "linkedinUrl": "https://www.linkedin.com/in/williamhgates",
+    "searchHandle": "williamhgates",
+    "dataSource": "linkedin_url_extraction",
+    "note": "Full enrichment requires Apollo paid plan. This is basic LinkedIn data."
+  }
+]

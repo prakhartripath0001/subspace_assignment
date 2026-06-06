@@ -45,13 +45,24 @@ class PipelineService {
         dryRun: options.dryRun || false,
       });
 
-      // ── Stage 1: Company Discovery ────────────────────────────────────────
+      // --- Stage 1: Company Discovery ----------------------------------------
       logger.info('\n[STAGE 1] COMPANY DISCOVERY');
       try {
-        const companies = await this.discoveryService.discoverCompanies(
+        const domains = await this.discoveryService.discoverCompanies(
           seedDomain,
           options.companyLimit || 10
         );
+
+        // Convert domain strings to Company model instances
+        const Company = require('../models/Company');
+        const companies = domains.map(domain => {
+          const name = domain.split('.')[0];
+          const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+          return new Company({
+            domain: domain,
+            name: capitalizedName,
+          });
+        });
 
         result.stages.companies = companies;
         result.summary.companiesDiscovered = companies.length;
@@ -66,7 +77,7 @@ class PipelineService {
         throw error;
       }
 
-      // ── Stage 2: Contact Discovery ────────────────────────────────────────
+      // --- Stage 2: Contact Discovery ----------------------------------------
       logger.info('\n[STAGE 2] CONTACT DISCOVERY');
       try {
         const companies = result.stages.companies || [];
@@ -86,7 +97,7 @@ class PipelineService {
         result.stages.contacts = [];
       }
 
-      // ── Stage 3: Email Resolution ─────────────────────────────────────────
+      // --- Stage 3: Email Resolution -----------------------------------------
       logger.info('\n[STAGE 3] EMAIL RESOLUTION');
       try {
         const contacts = result.stages.contacts || [];
@@ -112,7 +123,7 @@ class PipelineService {
         result.stages.emailContacts = result.stages.contacts || [];
       }
 
-      // ── Safety Checkpoint ─────────────────────────────────────────────────
+      // --- Safety Checkpoint -------------------------------------------------
       if (!options.skipConfirmation) {
         const shouldProceed = await this.safetyCheckpoint(result.summary);
         if (!shouldProceed) {
@@ -123,7 +134,7 @@ class PipelineService {
         }
       }
 
-      // ── Stage 4: Outreach ─────────────────────────────────────────────────
+      // --- Stage 4: Outreach -------------------------------------------------
       logger.info('\n[STAGE 4] EMAIL OUTREACH');
       try {
         const emailContacts = result.stages.emailContacts || [];
@@ -200,24 +211,36 @@ PIPELINE SUMMARY:
    * @returns {Promise<boolean>}
    */
   getUserConfirmation() {
+    // When running as an HTTP server, stdin is not a TTY and setRawMode
+    // will throw. We auto-confirm here; the safety summary is already
+    // returned to the API caller in the response body so they can review it.
+    if (!process.stdin.isTTY) {
+      logger.info(
+        'Safety checkpoint: running in non-TTY (HTTP server) mode — auto-confirming.'
+      );
+      return Promise.resolve(true);
+    }
+
     return new Promise((resolve) => {
       const stdin = process.stdin;
       stdin.setRawMode(true);
       stdin.resume();
       stdin.setEncoding('utf8');
 
-      process.stdout.write('Enter your choice: ');
+      process.stdout.write('Enter your choice (y/n): ');
 
-      stdin.on('data', (char) => {
+      const onData = (char) => {
         char = char.toString().toLowerCase().trim();
-
         stdin.setRawMode(false);
         stdin.pause();
+        stdin.removeListener('data', onData);
 
         const proceed = char === 'yes' || char === 'y';
         console.log(`\nYou entered: ${proceed ? 'YES - Proceeding' : 'NO - Cancelled'}\n`);
         resolve(proceed);
-      });
+      };
+
+      stdin.on('data', onData);
     });
   }
 

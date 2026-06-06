@@ -43,3 +43,5 @@
     at async enrichBatchContacts (/Users/prakhartripathi/Documents/src/subspace assignment/src/controllers/contactController.js:127:33) {"linkedinUrl":"https://www.linkedin.com/in/sundar-pichai","status":400,"prospeoMessage":"Request failed with status code 400"}
 2026-06-06 21:31:16 [ERROR]: Apollo authentication failed – check APOLLO_API_KEY {"status":403,"apolloMessage":"Request failed with status code 403"}
 2026-06-06 21:31:16 [ERROR]: Contact enrichment failed Apollo authentication error (HTTP 403): Invalid API key
+2026-06-06 21:50:55 [ERROR]: Pipeline Preview Failed {"error":"DiscoveryService is not a constructor"}
+2026-06-06 21:51:03 [ERROR]: Pipeline Execution Failed {"error":"DiscoveryService is not a constructor"}

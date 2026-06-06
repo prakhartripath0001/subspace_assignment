@@ -62,3 +62,88 @@
 2026-06-06 21:45:42 [INFO]: Apollo search initiated {"seedDomain":"stripe.com","perPage":3}
 2026-06-06 21:45:43 [INFO]: Apollo search responded {"status":200,"seedDomain":"stripe.com"}
 2026-06-06 21:45:43 [INFO]: Apollo search complete {"seedDomain":"stripe.com","rawCount":1,"uniqueCount":1}
+2026-06-06 21:49:07 [INFO]: Configuration loaded successfully {"environment":"development","apolloEnabled":true,"prospeoEnabled":true,"eazyreachEnabled":true,"brevoEnabled":true}
+2026-06-06 21:49:07 [INFO]: Server listening at http://localhost:3000
+2026-06-06 21:50:29 [INFO]: Apollo search initiated {"seedDomain":"stripe.com","perPage":3}
+2026-06-06 21:50:30 [INFO]: Apollo search responded {"status":200,"seedDomain":"stripe.com"}
+2026-06-06 21:50:30 [INFO]: Apollo search complete {"seedDomain":"stripe.com","rawCount":1,"uniqueCount":1}
+2026-06-06 21:50:37 [INFO]: Contact enrichment request received {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","saveToFile":true}
+2026-06-06 21:50:37 [INFO]: LinkedIn profile processing initiated {"linkedinUrl":"https://www.linkedin.com/in/williamhgates"}
+2026-06-06 21:50:37 [INFO]: Attempting corporate search for person {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","handle":"williamhgates"}
+2026-06-06 21:50:38 [INFO]: Corporate search responded {"status":200}
+2026-06-06 21:50:38 [INFO]: LinkedIn profile processing complete {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","name":"williamhgates","dataSource":"linkedin_url_extraction"}
+2026-06-06 21:50:38 [INFO]: Contact saved to file {"filePath":"/Users/prakhartripathi/Documents/src/subspace assignment/contacts.json"}
+2026-06-06 21:50:46 [INFO]: Contact enrichment request received {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","saveToFile":true}
+2026-06-06 21:50:46 [INFO]: LinkedIn profile processing initiated {"linkedinUrl":"https://www.linkedin.com/in/williamhgates"}
+2026-06-06 21:50:46 [INFO]: Attempting corporate search for person {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","handle":"williamhgates"}
+2026-06-06 21:50:48 [INFO]: Corporate search responded {"status":200}
+2026-06-06 21:50:48 [INFO]: LinkedIn profile processing complete {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","name":"williamhgates","dataSource":"linkedin_url_extraction"}
+2026-06-06 21:50:48 [INFO]: Contact saved to file {"filePath":"/Users/prakhartripathi/Documents/src/subspace assignment/contacts.json"}
+2026-06-06 21:50:55 [INFO]: Pipeline Preview Request {"seedDomain":"stripe.com","companyLimit":3}
+2026-06-06 21:50:55 [ERROR]: Pipeline Preview Failed {"error":"DiscoveryService is not a constructor"}
+2026-06-06 21:51:03 [INFO]: Pipeline Execute Request {"seedDomain":"stripe.com","skipConfirmation":true,"companyLimit":3}
+2026-06-06 21:51:03 [ERROR]: Pipeline Execution Failed {"error":"DiscoveryService is not a constructor"}
+2026-06-06 21:56:37 [INFO]: Configuration loaded successfully {"environment":"development","apolloEnabled":true,"prospeoEnabled":true,"eazyreachEnabled":true,"brevoEnabled":true}
+2026-06-06 21:56:37 [INFO]: Server listening at http://localhost:3000
+2026-06-06 21:57:12 [INFO]: Pipeline Preview Request {"seedDomain":"stripe.com","companyLimit":3}
+2026-06-06 21:57:12 [INFO]: === OUTREACH PIPELINE STARTED === {"seedDomain":"stripe.com","dryRun":false}
+2026-06-06 21:57:12 [INFO]: 
+[STAGE 1] COMPANY DISCOVERY
+2026-06-06 21:57:12 [INFO]: Apollo search initiated {"seedDomain":"stripe.com","perPage":3}
+2026-06-06 21:57:13 [INFO]: Apollo search responded {"status":200,"seedDomain":"stripe.com"}
+2026-06-06 21:57:13 [INFO]: Apollo search complete {"seedDomain":"stripe.com","rawCount":1,"uniqueCount":1}
+2026-06-06 21:57:13 [INFO]: [OK] Stage 1 Complete: 1 companies discovered
+2026-06-06 21:57:13 [INFO]: 
+[STAGE 2] CONTACT DISCOVERY
+2026-06-06 21:57:13 [INFO]: Stage 2 Batch: Discovering contacts for multiple companies {"count":1}
+2026-06-06 21:57:13 [WARN]: Failed to discover contacts for company {"error":"Company object with domain is required"}
+2026-06-06 21:57:13 [INFO]: Stage 2 Batch Complete {"processedCompanies":0,"failedCompanies":1,"totalContacts":0}
+2026-06-06 21:57:13 [INFO]: [OK] Stage 2 Complete: 0 contacts found
+2026-06-06 21:57:13 [INFO]: 
+[STAGE 3] EMAIL RESOLUTION
+2026-06-06 21:57:13 [INFO]: Stage 3 Batch: Resolving emails for contacts {"count":0}
+2026-06-06 21:57:13 [INFO]: Stage 3 Batch Complete {"processedContacts":0,"emailsResolved":0,"noEmailFound":0}
+2026-06-06 21:57:13 [INFO]: [OK] Stage 3 Complete: 0 emails resolved
+2026-06-06 21:57:13 [INFO]: 
+[STAGE 4] EMAIL OUTREACH
+2026-06-06 21:57:13 [INFO]: Stage 4 Batch: Sending emails to contacts {"count":0}
+2026-06-06 21:57:13 [WARN]: No contacts with verified emails. Skipping outreach. {"totalContacts":0}
+2026-06-06 21:57:13 [INFO]: [OK] Stage 4 Complete: 0 emails sent
+2026-06-06 21:57:13 [INFO]: === OUTREACH PIPELINE COMPLETED === {"success":true,"totalTime":1037,"companiesDiscovered":1,"contactsFound":0,"emailsResolved":0,"emailsSent":0,"errors":[]}
+2026-06-06 21:57:13 [INFO]: Pipeline Preview Complete {"seedDomain":"stripe.com","companiesFound":1}
+2026-06-06 21:57:40 [INFO]: Configuration loaded successfully {"environment":"development","apolloEnabled":true,"prospeoEnabled":true,"eazyreachEnabled":true,"brevoEnabled":true}
+2026-06-06 21:57:40 [INFO]: CLI Pipeline Execution Started {"seedDomain":"stripe.com","options":{"companyLimit":3,"skipConfirmation":true,"dryRun":true}}
+2026-06-06 21:57:40 [INFO]: === OUTREACH PIPELINE STARTED === {"seedDomain":"stripe.com","dryRun":true}
+2026-06-06 21:57:40 [INFO]: 
+[STAGE 1] COMPANY DISCOVERY
+2026-06-06 21:57:40 [INFO]: Apollo search initiated {"seedDomain":"stripe.com","perPage":3}
+2026-06-06 21:57:41 [INFO]: Apollo search responded {"status":200,"seedDomain":"stripe.com"}
+2026-06-06 21:58:45 [INFO]: Configuration loaded successfully {"environment":"development","apolloEnabled":true,"prospeoEnabled":true,"eazyreachEnabled":true,"brevoEnabled":true}
+2026-06-06 21:58:45 [INFO]: Server listening at http://localhost:3000
+2026-06-06 21:59:09 [INFO]: Pipeline Preview Request {"seedDomain":"stripe.com","companyLimit":3}
+2026-06-06 21:59:09 [INFO]: === OUTREACH PIPELINE STARTED === {"seedDomain":"stripe.com","dryRun":false}
+2026-06-06 21:59:09 [INFO]: 
+[STAGE 1] COMPANY DISCOVERY
+2026-06-06 21:59:09 [INFO]: Apollo search initiated {"seedDomain":"stripe.com","perPage":3}
+2026-06-06 21:59:10 [INFO]: Apollo search responded {"status":200,"seedDomain":"stripe.com"}
+2026-06-06 21:59:10 [INFO]: Apollo search complete {"seedDomain":"stripe.com","rawCount":1,"uniqueCount":1}
+2026-06-06 21:59:10 [INFO]: [OK] Stage 1 Complete: 1 companies discovered
+2026-06-06 21:59:10 [INFO]: 
+[STAGE 2] CONTACT DISCOVERY
+2026-06-06 21:59:10 [INFO]: Stage 2 Batch: Discovering contacts for multiple companies {"count":1}
+2026-06-06 21:59:10 [INFO]: Stage 2: Contact Discovery Started {"company":"Stripe","domain":"stripe.com"}
+2026-06-06 21:59:11 [INFO]: Stage 2 Complete {"company":"Stripe","contactsFound":0}
+2026-06-06 21:59:11 [INFO]: Stage 2 Batch Complete {"processedCompanies":1,"failedCompanies":0,"totalContacts":0}
+2026-06-06 21:59:11 [INFO]: [OK] Stage 2 Complete: 0 contacts found
+2026-06-06 21:59:11 [INFO]: 
+[STAGE 3] EMAIL RESOLUTION
+2026-06-06 21:59:11 [INFO]: Stage 3 Batch: Resolving emails for contacts {"count":0}
+2026-06-06 21:59:11 [INFO]: Stage 3 Batch Complete {"processedContacts":0,"emailsResolved":0,"noEmailFound":0}
+2026-06-06 21:59:11 [INFO]: [OK] Stage 3 Complete: 0 emails resolved
+2026-06-06 21:59:11 [INFO]: 
+[STAGE 4] EMAIL OUTREACH
+2026-06-06 21:59:11 [INFO]: Stage 4 Batch: Sending emails to contacts {"count":0}
+2026-06-06 21:59:11 [WARN]: No contacts with verified emails. Skipping outreach. {"totalContacts":0}
+2026-06-06 21:59:11 [INFO]: [OK] Stage 4 Complete: 0 emails sent
+2026-06-06 21:59:11 [INFO]: === OUTREACH PIPELINE COMPLETED === {"success":true,"totalTime":2107,"companiesDiscovered":1,"contactsFound":0,"emailsResolved":0,"emailsSent":0,"errors":[]}
+2026-06-06 21:59:11 [INFO]: Pipeline Preview Complete {"seedDomain":"stripe.com","companiesFound":1}
