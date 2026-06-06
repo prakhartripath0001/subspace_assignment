@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const { discoverCompanies } = require('./services/discoveryService');
+const contactRoutes = require('./routes/contactRoutes');
+const pipelineRoutes = require('./routes/pipelineRoutes');
 const logger = require('./utils/logger');
 
 const app = express();
@@ -9,7 +11,17 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.json({
+    status: 'ok',
+    message: 'Automated B2B Outreach Pipeline API',
+    version: '2.0.0',
+    endpoints: {
+      discovery: 'GET /discover?domain=google.com',
+      contact_enrichment: 'POST /api/contact/enrich',
+      pipeline_execute: 'POST /api/pipeline/execute',
+      pipeline_preview: 'POST /api/pipeline/preview',
+    },
+  });
 });
 
 app.get('/discover', async (req, res) => {
@@ -147,5 +159,11 @@ app.post('/companies/search', async (req, res) => {
     });
   }
 });
+
+// Register contact enrichment routes
+app.use('/api/contact', contactRoutes);
+
+// Register pipeline routes
+app.use('/api/pipeline', pipelineRoutes);
 
 module.exports = app;

@@ -10,3 +10,36 @@
     at async /Users/prakhartripathi/Documents/src/subspace assignment/src/app.js:21:21 {"seedDomain":"stripe.com","status":422,"apolloMessage":"Request failed with status code 422"}
 2026-06-06 18:01:08 [ERROR]: Apollo company search failed Request failed with status code 403 {"domain":"google.com","status":403}
 2026-06-06 18:04:21 [ERROR]: Apollo company search failed Request failed with status code 422 {"domain":"google.com","status":422}
+2026-06-06 21:27:31 [ERROR]: AxiosError: Request failed with status code 400
+    at settle (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:2090:12)
+    at IncomingMessage.handleStreamEnd (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:3788:11)
+    at IncomingMessage.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    at Axios.request (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:5133:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async enrichPerson (/Users/prakhartripathi/Documents/src/subspace assignment/src/services/contactService.js:102:22)
+    at async enrichContact (/Users/prakhartripathi/Documents/src/subspace assignment/src/controllers/contactController.js:40:29) {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","status":400,"prospeoMessage":"Request failed with status code 400"}
+2026-06-06 21:27:31 [ERROR]: Contact enrichment failed Request failed with status code 400
+2026-06-06 21:27:41 [ERROR]: AxiosError: Request failed with status code 400
+    at settle (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:2090:12)
+    at IncomingMessage.handleStreamEnd (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:3788:11)
+    at IncomingMessage.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    at Axios.request (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:5133:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async enrichPerson (/Users/prakhartripathi/Documents/src/subspace assignment/src/services/contactService.js:102:22)
+    at async enrichBatchContacts (/Users/prakhartripathi/Documents/src/subspace assignment/src/controllers/contactController.js:127:33) {"linkedinUrl":"https://www.linkedin.com/in/williamhgates","status":400,"prospeoMessage":"Request failed with status code 400"}
+2026-06-06 21:27:41 [ERROR]: AxiosError: Request failed with status code 400
+    at settle (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:2090:12)
+    at IncomingMessage.handleStreamEnd (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:3788:11)
+    at IncomingMessage.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    at Axios.request (/Users/prakhartripathi/Documents/src/subspace assignment/node_modules/axios/dist/node/axios.cjs:5133:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async enrichPerson (/Users/prakhartripathi/Documents/src/subspace assignment/src/services/contactService.js:102:22)
+    at async enrichBatchContacts (/Users/prakhartripathi/Documents/src/subspace assignment/src/controllers/contactController.js:127:33) {"linkedinUrl":"https://www.linkedin.com/in/sundar-pichai","status":400,"prospeoMessage":"Request failed with status code 400"}
+2026-06-06 21:31:16 [ERROR]: Apollo authentication failed – check APOLLO_API_KEY {"status":403,"apolloMessage":"Request failed with status code 403"}
+2026-06-06 21:31:16 [ERROR]: Contact enrichment failed Apollo authentication error (HTTP 403): Invalid API key

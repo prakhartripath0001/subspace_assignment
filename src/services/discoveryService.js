@@ -10,16 +10,16 @@
  *   POST https://api.apollo.io/api/v1/organizations/search
  *
  * Environment variables consumed:
- *   APOLLO_API_KEY   – required; your Apollo.io V1 API key
+ *   APOLLO_API_KEY   - required; your Apollo.io V1 API key
  *
  * Public API of this module:
- *   discoverCompanies(seedDomain, limit?) → Promise<string[]>
+ *   discoverCompanies(seedDomain, limit?) -> Promise<string[]>
  */
 
 const axios = require('axios');
 const logger = require('../utils/logger');
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+// --- Constants ----------------------------------------------------------------
 
 /** Base URL for the Apollo.io V1 REST API. */
 const APOLLO_API_BASE = 'https://api.apollo.io/api/v1';
@@ -34,7 +34,7 @@ const SEARCH_ENDPOINT = `${APOLLO_API_BASE}/organizations/search`;
  */
 const DEFAULT_PER_PAGE = 10;
 
-// ─── Apollo Response Shape (JSDoc only – for IDE assistance) ──────────────────
+// --- Apollo Response Shape (JSDoc only - for IDE assistance) ------------------
 
 /**
  * @typedef {Object} ApolloOrganization
@@ -54,7 +54,7 @@ const DEFAULT_PER_PAGE = 10;
  * @property {number}               total_entries - Total results available server-side.
  */
 
-// ─── Core Service Function ────────────────────────────────────────────────────
+// --- Core Service Function ----------------------------------------------------
 
 /**
  * Discovers lookalike companies for a given seed domain via Apollo.io.
@@ -77,10 +77,10 @@ const DEFAULT_PER_PAGE = 10;
  *
  * @example
  *   const domains = await discoverCompanies('stripe.com', 20);
- *   // → ['braintreepayments.com', 'square.com', 'adyen.com', ...]
+ *   // -> ['braintreepayments.com', 'square.com', 'adyen.com', ...]
  */
 async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
-  // ── Input guard ────────────────────────────────────────────────────────────
+  // --- Input guard ------------------------------------------------------------
   if (!seedDomain || typeof seedDomain !== 'string' || !seedDomain.trim()) {
     throw new TypeError(
       `discoverCompanies: seedDomain must be a non-empty string. Received: ${JSON.stringify(seedDomain)}`,
@@ -98,17 +98,17 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
   // Apollo max is 100 per page; silently clamp to avoid a 400 error.
   const perPage = Math.min(Math.max(1, Number(limit) || DEFAULT_PER_PAGE), 100);
 
-  // ── Build request payload ──────────────────────────────────────────────────
+  // --- Build request payload --------------------------------------------------
   /**
    * Apollo Organisation Search request body.
    *
    * Key fields:
-   *   api_key              – V1 auth mechanism (bearer tokens also supported but
+   *   api_key              - V1 auth mechanism (bearer tokens also supported but
    *                          V1 still accepts key-in-body for backward compat).
-   *   q_organization_domains – Comma-separated domain string Apollo uses to find
+   *   q_organization_domains - Comma-separated domain string Apollo uses to find
    *                          organisations operating on or similar to this domain.
-   *   per_page             – Result page size (1–100).
-   *   page                 – 1-indexed page number (we only fetch page 1).
+   *   per_page             - Result page size (1-100).
+   *   page                 - 1-indexed page number (we only fetch page 1).
    */
   const requestPayload = {
     q_organization_domains: seedDomain.trim().toLowerCase(),
@@ -121,7 +121,7 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
     perPage,
   });
 
-  // ── Network request ────────────────────────────────────────────────────────
+  // --- Network request --------------------------------------------------------
   try {
     const response = await axios.post(SEARCH_ENDPOINT, requestPayload, {
       headers: {
@@ -139,10 +139,10 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
       seedDomain: requestPayload.q_organization_domains,
     });
 
-    // ── Data extraction ──────────────────────────────────────────────────────
+    // --- Data extraction ------------------------------------------------------
     /**
-     * response.data  → ApolloSearchResponse
-     * response.data.organizations → ApolloOrganization[]
+     * response.data  -> ApolloSearchResponse
+     * response.data.organizations -> ApolloOrganization[]
      *
      * Defensive fallback to [] guards against:
      *   - Apollo returning a 200 with an empty body
@@ -157,7 +157,7 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
       return [];
     }
 
-    // ── Data cleaning pipeline ───────────────────────────────────────────────
+    // --- Data cleaning pipeline -----------------------------------------------
     const uniqueDomains = [
       ...new Set(
         organisations
@@ -180,15 +180,15 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
 
     return uniqueDomains; // e.g. ['competitor1.com', 'competitor2.com']
 
-    // ── Error handling ───────────────────────────────────────────────────────
+    // --- Error handling -------------------------------------------------------
   } catch (err) {
     // axios wraps HTTP-level errors inside err.response when the server replied
     const httpStatus = err.response?.status;
     const apolloMessage = err.response?.data?.message ?? err.message;
 
-    // ── Rate-limit handling (HTTP 429) ─────────────────────────────────────
+    // --- Rate-limit handling (HTTP 429) -------------------------------------
     if (httpStatus === 429) {
-      logger.warn('Apollo.io rate limit hit – backing off gracefully', {
+      logger.warn('Apollo.io rate limit hit - backing off gracefully', {
         seedDomain,
         retryAfter: err.response?.headers?.['retry-after'] ?? 'unknown',
         apolloMessage,
@@ -198,16 +198,16 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
       return [];
     }
 
-    // ── Authentication / authorisation errors ──────────────────────────────
+    // --- Authentication / authorisation errors ------------------------------
     if (httpStatus === 401 || httpStatus === 403) {
-      logger.error('Apollo.io authentication failed – check APOLLO_API_KEY', {
+      logger.error('Apollo.io authentication failed - check APOLLO_API_KEY', {
         status: httpStatus,
         apolloMessage,
       });
       throw new Error(`Apollo authentication error (HTTP ${httpStatus}): ${apolloMessage}`);
     }
 
-    // ── Timeout / network-level errors ─────────────────────────────────────
+    // --- Timeout / network-level errors -------------------------------------
     if (err.code === 'ECONNABORTED' || err.code === 'ETIMEDOUT') {
       logger.error('Apollo.io request timed out', {
         seedDomain,
@@ -217,7 +217,7 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
       throw new Error(`Apollo request timed out after 10 seconds for domain: ${seedDomain}`);
     }
 
-    // ── Unexpected / unclassified errors ───────────────────────────────────
+    // --- Unexpected / unclassified errors -----------------------------------
     logger.error('Unexpected error while querying Apollo.io', {
       seedDomain,
       status: httpStatus ?? 'N/A',
@@ -231,7 +231,7 @@ async function discoverCompanies(seedDomain, limit = DEFAULT_PER_PAGE) {
   }
 }
 
-// ─── Exports ──────────────────────────────────────────────────────────────────
+// --- Exports ------------------------------------------------------------------
 
 module.exports = {
   discoverCompanies,

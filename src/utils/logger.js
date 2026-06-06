@@ -41,7 +41,7 @@ const logger = createLogger({
   ),
 
   transports: [
-    // ── Console transport ─────────────────────────────────────────────────────
+    // --- Console transport -----------------------------------------------------
     new transports.Console({
       format: combine(
         colorize({ all: true }),
@@ -50,7 +50,7 @@ const logger = createLogger({
       ),
     }),
 
-    // ── Combined file transport (info+) ───────────────────────────────────────
+    // --- Combined file transport (info+) ---------------------------------------
     new transports.File({
       filename: 'logs/combined.log',
       level: 'info',
@@ -58,7 +58,7 @@ const logger = createLogger({
       maxFiles: 5,                // keep last 5 rotated files
     }),
 
-    // ── Error-only file transport ─────────────────────────────────────────────
+    // --- Error-only file transport ---------------------------------------------
     new transports.File({
       filename: 'logs/error.log',
       level: 'error',
